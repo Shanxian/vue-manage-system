@@ -1,5 +1,6 @@
 {
-    "list": [{
+    "list": [
+        {
             "id": 1,
             "name": "张三",
             "money": 123,
@@ -31,6 +32,15 @@
             "name": "赵六",
             "money": 1011,
             "address": "福建省厦门市鼓浪屿",
+            "state": "成功",
+            "date": "2019-10-20",
+            "thumb": "https://lin-xin.gitee.io/images/post/notice.png"
+        },
+        {
+            "id": 5,
+            "name": "李武",
+            "money": 2011,
+            "address": "广东省广州市白云区",
             "state": "成功",
             "date": "2019-10-20",
             "thumb": "https://lin-xin.gitee.io/images/post/notice.png"
