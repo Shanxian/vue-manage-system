@@ -21,6 +21,7 @@
             type="password"
             placeholder="password"
             v-model="param.password"
+            show-password
             @keyup.enter="submitForm(login)"
           >
             <template #prepend>

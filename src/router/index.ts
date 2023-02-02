@@ -21,15 +21,15 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard.vue')
       },
-      {
-        path: '/table',
-        name: 'm-user',
-        meta: {
-          title: '用户管理',
-          permiss: '2'
-        },
-        component: () => import(/* webpackChunkName: "table" */ '../views/table.vue')
-      },
+      // {
+      //   path: '/table',
+      //   name: 'm-user',
+      //   meta: {
+      //     title: '用户管理',
+      //     permiss: '2'
+      //   },
+      //   component: () => import(/* webpackChunkName: "table" */ '../views/table.vue')
+      // },
       {
         path: '/charts',
         name: 'basecharts',
@@ -138,13 +138,13 @@ const routes: RouteRecordRaw[] = [
         component: () => import(/* webpackChunkName: "import" */ '../views/import.vue')
       },
       {
-        path: '/manage-user',
+        path: '/table',
         name: 'manage-user',
         meta: {
           title: '用户管理',
           permiss: '14'
         },
-        component: () => import(/* webpackChunkName: "import" */ '../views/manage-user.vue')
+        component: () => import(/* webpackChunkName: "table" */ '../views/table.vue')
       }
     ]
   },

@@ -13,8 +13,8 @@
           placeholder="用户名"
           class="handle-input mr10"
         ></el-input>
-        <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-        <el-button type="primary" :icon="Plus">新增</el-button>
+        <el-button type="primary" :icon="Search" circle @click="handleSearch" />
+        <el-button type="primary" :icon="Plus" v-permiss-hide="16">新增用户</el-button>
       </div>
       <el-table
         :data="tableData"
@@ -27,18 +27,6 @@
         <el-table-column prop="name" label="用户名"></el-table-column>
         <el-table-column label="账户余额">
           <template #default="scope">￥{{ scope.row.money }}</template>
-        </el-table-column>
-        <el-table-column label="头像(查看大图)" align="center">
-          <template #default="scope">
-            <el-image
-              class="table-td-thumb"
-              :src="scope.row.thumb"
-              :z-index="10"
-              :preview-src-list="[scope.row.thumb]"
-              preview-teleported
-            >
-            </el-image>
-          </template>
         </el-table-column>
         <el-table-column prop="address" label="地址"></el-table-column>
         <el-table-column label="状态" align="center">
@@ -64,7 +52,7 @@
               text
               :icon="Edit"
               @click="handleEdit(scope.$index, scope.row)"
-              v-permiss="15"
+              v-permiss-hide="15"
             >
               编辑
             </el-button>
@@ -73,7 +61,7 @@
               :icon="Delete"
               class="red"
               @click="handleDelete(scope.$index)"
-              v-permiss="16"
+              v-permiss-hide="16"
             >
               删除
             </el-button>
@@ -143,6 +131,7 @@ const query = reactive<QueryItem>({
 let initData: TableItem[];
 const tableData = ref<TableItem[]>([]);
 const pageTotal = ref(0);
+const noRoleOperation = ref(false);
 // 获取表格数据
 const getData = () => {
   fetchData().then((res) => {

@@ -19,10 +19,19 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 // 自定义权限指令
 const permiss = usePermissStore();
 
-app.directive('permiss', {
+app.directive('permiss-hide', {
   mounted(el, binding) {
     if (!permiss.key.includes(String(binding.value))) {
-      el['hidden'] = true;
+      el?.remove();
+    }
+  }
+});
+
+app.directive('permiss-disabled', {
+  mounted(el, binding) {
+    if (!permiss.key.includes(String(binding.value))) {
+      el['disabled'] = true;
+      el['className'] += ' is-disabled';
     }
   }
 });
