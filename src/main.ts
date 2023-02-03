@@ -4,12 +4,15 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import App from './App.vue';
 import router from './router';
 import { usePermissStore } from './store/permiss';
+import VXETable from 'vxe-table';
+import 'vxe-table/lib/style.css';
 import 'element-plus/dist/index.css';
 import './assets/css/icon.css';
 
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
+app.use(VXETable);
 
 // 注册elementplus图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

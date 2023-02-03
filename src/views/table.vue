@@ -78,6 +78,38 @@
           @current-change="handlePageChange"
         ></el-pagination>
       </div>
+
+      <div>
+        <vxe-table
+          border
+          class="vxe-table-scrollbar"
+          max-height="300"
+          :column-config="{ resizable: true }"
+          :align="'left'"
+          :data="tableData"
+        >
+          <vxe-column field="id" title="ID"></vxe-column>
+          <vxe-column field="name" title="Name"></vxe-column>
+          <vxe-column field="money" title="Money"></vxe-column>
+          <vxe-column field="state" title="State">
+            <template #default="scope">
+              <el-tag
+                :type="
+                  scope.row.state === '成功'
+                    ? 'success'
+                    : scope.row.state === '失败'
+                    ? 'danger'
+                    : ''
+                "
+              >
+                {{ scope.row.state }}
+              </el-tag>
+            </template>
+          </vxe-column>
+          <vxe-column field="address" title="Address"></vxe-column>
+          <vxe-column field="date" title="Date"></vxe-column>
+        </vxe-table>
+      </div>
     </div>
 
     <!-- 编辑弹出框 -->
@@ -132,6 +164,19 @@ let initData: TableItem[];
 const tableData = ref<TableItem[]>([]);
 const pageTotal = ref(0);
 const noRoleOperation = ref(false);
+const tableData1 = ref([
+  { id: 10001, name: 'Test1', role: 'Develop', sex: 'Man', age: 28, address: 'test abc' },
+  { id: 10002, name: 'Test2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
+  { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
+  {
+    id: 10004,
+    name: 'Test4',
+    role: 'Designer',
+    sex: 'Women',
+    age: 24,
+    address: 'Shanghai',
+  },
+]);
 // 获取表格数据
 const getData = () => {
   fetchData().then((res) => {
